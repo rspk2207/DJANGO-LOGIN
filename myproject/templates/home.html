@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'home.css'%}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        </div>
+        <div class="login">
+            <div class="navbar">
+                <div id="navbar">SCIEnT</div>
+                <button id="about" onclick="location.href='/home/about'">ABOUT US</button>
+                <button id="dashboard" onclick="location.href = '/home/dashboard'">DASHBOARD</button>
+                <button id="logout" onclick="location.href='/logout'">LOG OUT</button>
+            </div>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="{{message.tags}}">{{message}}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class= "wrapper">
+                <div id="title">Hi {{user.student.name}}</div>
+                <div id="content"><span>DOMAINS</span><br>
+                    <br>
+                    <span>TECHNO MANAGEMENT</span><br>
+                    This wing works on the organisation of SCIEnT workshops, activities, guest lectures and other activities. The job involves technical responsibilities like security, tools and inventory management. The job involves managerial responsibilities like organisation and public relations too. This is the general workforce of SCIEnT.
+                    <br><br>
+                    <span>CREATIVES</span><br>
+                    The creatives wing takes care of content and poster designing of SCIEnT. They decide the look of the team and general ambience. All the content and posters that come out, they are behind all that! Job demands a lot of creativity and out of the box thinking. They must make sure users tune in to all SCIEnT handles and activities. They ensure that SCIEnT has the reach across the college.
+                    <br><br>
+                    <span>WEB OPS</span><br>
+                    The web ops of the SCIEnT club works on designing, adding changes, updating, and testing the website of SCIEnT. It involves implementing various creative web development ideas in various web development platforms.
+                    <br><br>
+                    <span>APP DEV</span><br>
+                    The app dev team of the scient club works on designing, developing, and testing the app of SCIEnT.
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <script>
+            setTimeout(() => {
+                $('.messages').fadeTo(400,0).slideUp(400,()=>{
+                    $(this).remove();
+                });
+            },3000);
+        </script>
+    </body>
+</html>

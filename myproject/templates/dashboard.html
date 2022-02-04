@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'dashboard.css'%}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        </div>
+        <div class="login">
+            <div class="navbar">
+                <div id="navbar">SCIEnT</div>
+                <button id="home" onclick="location.href='/home'">HOME</button>
+                <button id="about" onclick="location.href = '/home/about'">ABOUT US</button>
+                <button id="logout" onclick="location.href='/logout'">LOG OUT</button>
+            </div>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="{{message.tags}}">{{message}}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class= "wrapper">
+                <div id="title">DASHBOARD</div>
+                <div id="content">
+                    <div id="content-cover">
+                    <div id="content-front">
+                        <img src="{% static 'card.jpg'%}" style="width:100%;height: 100%;">
+                    </div>
+                    <div id="content-back">
+                        <div id="content-content">
+                        <span>DETAILS</span><br><br>
+                            NAME: {{user.student.name}}<br><br>
+                            EMAIL: {{user.email}}<br><br>
+                            ROLL NUMBER: {{user.student.roll_number}}<br><br>
+                            COLLEGE: {{user.student.college}}<br><br>
+                            YEAR OF STUDY: {{user.student.year}}<br><br>
+                            GENDER: {{user.student.gender}}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <script>
+            setTimeout(() => {
+                $('.messages').fadeTo(400,0).slideUp(400,()=>{
+                    $(this).remove();
+                });
+            },3000);
+        </script>
+    </body>
+</html>

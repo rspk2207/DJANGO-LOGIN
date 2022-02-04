@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'index.css'%}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        </div>
+        <div class="register">
+            <div class="navbar">
+                <div id="navbar">SCIEnT</div>
+                <button id="login" onclick="location.href='/login'">LOGIN</button>
+            </div>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="{{message.tags}}">{{message}}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class= "wrapper">
+                <div id="title">REGISTER</div>
+                <form id="content" method="POST" action="reg">
+                {% csrf_token%}
+                <label for="username">ENTER YOUR USERNAME</label>
+                <input type="text" class="username" name="username">
+                <label for="name">ENTER YOUR FULL NAME</label>
+                <input type="text" class="name" name="name">
+                <label for="email" >ENTER YOUR EMAIL ID</label>
+                <input type="text" class="email" name="email">
+                <label for="roll">ENTER YOUR ROLL NUMBER</label>
+                <input type="text" class="roll" name="roll">
+                <label for="clg">ENTER YOUR COLLEGE NAME</label>
+                <input type="text" class="clg" name="clg">
+                <label for="year">ENTER YOUR YEAR OF STUDYING</label>
+                <input type="text" class="year" name="year">
+                <label for="gender">SPECIFY YOUR GENDER</label>
+                <div id="gender" >
+                <input type="radio" name="gender" value="male">MALE</input>
+                <input type="radio" name="gender" value="female">FEMALE</input>
+                <input type="radio" name="gender" value="others">OTHERS</input>
+                </div>
+                <label for="password1">ENTER YOUR PASSWORD</label>
+                <input type="password" class="password" name="password1">
+                <label for="password2">CONFIRM YOUR PASSWORD</label>
+                <input type="password" class="password" name="password2">
+                </form>
+                <input type="submit" class="submit" form="content">
+            </div>
+            </div>
+        </div>
+        <script>
+            setTimeout(() => {
+                $('.messages').fadeTo(400,0).slideUp(400,()=>{
+                    $(this).remove();
+                });
+            },3000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'about.css'%}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        </div>
+        <div class="login">
+            <div class="navbar">
+                <div id="navbar">SCIEnT</div>
+                <button id="home" onclick="location.href='/home'">HOME</button>
+                <button id="dashboard" onclick="location.href = '/home/dashboard'">DASHBOARD</button>
+                <button id="logout" onclick="location.href='/logout'">LOG OUT</button>
+            </div>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="{{message.tags}}">{{message}}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class= "wrapper">
+                <div id="title">ABOUT US</div>
+                <div id="content">
+                    Innovation happens when you transform an idea into reality. 
+                    <br><br>
+                    SCIEnT is a multi-disciplinary innovation centre, providing opportunities to students to delve into the ever-expanding world of technology, and discover, hands-on, the incredible scope for innovation that the world offers today. The lab allows students to explore and experiment with technology without dealing with the fear and cost of failure. At SCIEnT, students are offered many tools, machines, consumables and services, and a space in which to work, learn and grow.
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <script>
+            setTimeout(() => {
+                $('.messages').fadeTo(400,0).slideUp(400,()=>{
+                    $(this).remove();
+                });
+            },3000);
+        </script>
+    </body>
+</html>
